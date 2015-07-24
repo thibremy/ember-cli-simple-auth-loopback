@@ -6,16 +6,17 @@ export default Base.extend({
 
     serverTokenEndpoint: '/api/users/login',
     serverTokenRevocationEndpoint: '/api/users/logout',
+    ttl: 1209600,
 
     init() {
         this.serverTokenEndpoint = Configuration.serverTokenEndpoint;
         this.serverTokenRevocationEndpoint = Configuration.serverTokenRevocationEndpoint;
+        this.ttl = Configuration.ttl;
     },
 
     restore(data) {
-        console.log('restore');
         return new Ember.RSVP.Promise(function (resolve, reject) {
-            if (!Ember.isEmpty(data.token)) {
+            if (!Ember.isEmpty(data.id)) {
                 resolve(data);
             } else {
                 reject();
@@ -37,14 +38,12 @@ export default Base.extend({
         var self = this;
         return new Ember.RSVP.Promise(function (resolve, reject) {
             let data = {
-                ttl: 1209600,
+                ttl: self.ttl,
                 username: options.identification,
                 password: options.password
             };
             self.makeRequest(self.serverTokenEndpoint, data).then(function (response) {
-                console.log("makeRequest", response);
                 Ember.run(function () {
-
                     resolve(response);
                 });
             }, function (xhr) {
