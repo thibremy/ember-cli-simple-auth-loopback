@@ -1,0 +1,1 @@
+export { default } from 'ember-cli-simple-auth-loopback/authenticators/loopback';

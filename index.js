@@ -2,5 +2,9 @@
 'use strict';
 
 module.exports = {
-  name: 'ember-cli-simple-auth-loopback'
+    name: 'Ember CLI Simple Auth Loopback',
+
+    included: function (app) {
+        
+    }
 };
