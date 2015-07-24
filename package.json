@@ -1,7 +1,7 @@
 {
   "name": "ember-cli-simple-auth-loopback",
   "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "description": "ember-cli-simple-auth integration with loopback.",
   "directories": {
     "doc": "doc",
     "test": "tests"
