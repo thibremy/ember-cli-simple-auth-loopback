@@ -55,6 +55,16 @@ export default Base.extend({
     },
 
     invalidate() {
-        return Ember.RSVP.resolve();
+        var self = this;
+        return new Ember.RSVP.Promise(function (resolve) {
+            if (Ember.isEmpty(self.serverTokenRevocationEndpoint)) {
+                resolve();
+                return;
+            }
+            let endpoint = self.serverTokenRevocationEndpoint;
+            self.makeRequest(endpoint).always(function(){
+                resolve();
+            });
+        });
     }
 });
