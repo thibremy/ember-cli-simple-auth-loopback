@@ -1,8 +1,8 @@
 module.exports = {
-  normalizeEntityName() {
+  normalizeEntityName: function() {
   },
 
-  afterInstall() {
+  afterInstall: function() {
     return this.addBowerPackageToProject('ember-simple-auth', '0.8.0');
   }
 };
